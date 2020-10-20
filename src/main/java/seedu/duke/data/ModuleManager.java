@@ -79,10 +79,12 @@ public class ModuleManager {
      * @param newModule
      *  The module object to add to the module list
      */
-    public static void add(Module newModule) throws DuplicateModuleException {
+    public static void add(Module newModule) throws DuplicateModuleException, ModuleNotFoundException {
         if (contains(newModule.getModuleCode())) {
             throw new DuplicateModuleException();
         }
+        Module verifiedNusMod = getNusModule(newModule.getModuleCode());
+        newModule.setTitle(verifiedNusMod.getTitle());
         modulesMap.put(newModule.getModuleCode(), newModule);
     }
 
