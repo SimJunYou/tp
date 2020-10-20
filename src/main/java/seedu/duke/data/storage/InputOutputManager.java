@@ -83,13 +83,7 @@ public class InputOutputManager {
             if (TaskManager.getTaskCount() != 0) {
                 Encoder.saveTasks(userTaskFile.toString());
             }
-        } catch (ModuleManager.ModuleNotFoundException e) {
-            logger.getLogger().log(Level.WARNING, e.getLocalizedMessage(), e);
-            // print module not found
-        } catch (TaskManager.TaskNotFoundException e) {
-            logger.getLogger().log(Level.WARNING, e.getLocalizedMessage(), e);
-            // print task not found
-        } catch (IOException e) {
+        } catch (ModuleManager.ModuleNotFoundException | TaskManager.TaskNotFoundException | IOException e) {
             logger.getLogger().log(Level.WARNING, e.getLocalizedMessage(), e);
         }
     }
@@ -101,12 +95,8 @@ public class InputOutputManager {
         logger.getLogger().info("Saving NUS modules into " + nusModuleFileName);
         try {
             Encoder.saveNusModules(nusModuleFile.toString());
-        } catch (ModuleManager.ModuleNotFoundException e) {
+        } catch (ModuleManager.ModuleNotFoundException | IOException e) {
             logger.getLogger().log(Level.WARNING, e.getLocalizedMessage(), e);
-            // print module not found
-        } catch (IOException e) {
-            logger.getLogger().log(Level.WARNING, e.getLocalizedMessage(), e);
-            e.printStackTrace();
         }
     }
 }
