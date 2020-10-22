@@ -23,7 +23,7 @@ public class ModuleTest {
             ModuleManager.clearModules();
             ModuleManager.add(normalMod1);
             ModuleManager.add(normalMod2);
-        } catch (ModuleManager.DuplicateModuleException e) {
+        } catch (ModuleManager.DuplicateModuleException | ModuleManager.ModuleNotFoundException e) {
             // do nothing
         }
     }
