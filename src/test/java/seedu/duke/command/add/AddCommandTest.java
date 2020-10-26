@@ -2,6 +2,7 @@ package seedu.duke.command.add;
 
 import org.junit.jupiter.api.Test;
 import seedu.duke.command.CommandResult;
+import seedu.duke.data.storage.InputOutputManager;
 import seedu.duke.util.ExceptionMessage;
 
 import java.time.format.DateTimeParseException;
@@ -18,6 +19,7 @@ public class AddCommandTest {
 
     @Test
     void addModule_duplicateModuleMessage_isShown() {
+        InputOutputManager.start();
         AddCommand addMod = new AddModuleCommand(MOD_CODE_1);
         AddCommand addDupMod = new AddModuleCommand(MOD_CODE_1);
         addMod.execute();
